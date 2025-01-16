@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #dfe0e3;
+        }
+      
+    </style>
+
+<!-- Custom Styling -->
+<style>
+    /* Custom styles for order details cards */
+    .contents {
+        padding: 30px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px; /* Add bottom margin for spacing */
+        transition: all 0.3s ease-in-out;
+    }
+
+    .card-header {
+        font-size: 16px;
+        padding: 15px;
+        text-align: center;
+        font-weight: bold;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .card-body {
+        padding: 15px;
+        text-align: left;
+    }
+
+    .card-body p {
+        font-size: 14px;
+        margin: 8px 0;
+    }
+
+    .card-body strong {
+        font-weight: bold;
+    }
+
+    .card-body span.text-muted {
+        color: #6c757d;
+        font-weight: normal;
+    }
+
+    /* Hover effect for cards */
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transform: scale(1.05);
+    }
+
+    /* Icons for better visuals */
+    .card-body i {
+        margin-right: 8px;
+        color: #495057;
+    }
+
+    /* Responsive design */
+    @media (max-width: 767px) {
+        .card {
+            margin-bottom: 15px;
+        }
+
+        .card-header h5 {
+            font-size: 14px;
+        }
+
+        .card-body p {
+            font-size: 12px;
+        }
+    }
+</style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <span class="text-white" id="close-btn"><i class="fas fa-times"></i></span>
+        <div class="text-center py-4">
+             <!-- <h4>Admin Panel</h4>  -->
+            <img src="./AARTI LOGO.webp" style="width: 50px;"  alt="" srcset="">
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link " href="Dashboard.html">Dashboard</a>
+            <a class="nav-link" href="slider.html">Slider</a>
+            <a class="nav-link" href="About.html">About</a>
+            <a class="nav-link active" href="Order.html">Order</a>
+            <a class="nav-link" href="product-details.html">Payment Details</a>
+            <!-- <a class="nav-link" href="#">Content management</a> -->
+            <a class="nav-link" href="Notification.html">Notification Communication</a>
+            <a class="nav-link" href="Billing.html">Billing</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            
+            <!-- Logout -->
+            <a class="nav-link" href="#" onclick="confirmLogout()">Logout</a>
+            
+        </nav>
+    </div>
+
+    <div class="content" id="content">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <span class="toggle-btn" id="toggle-btn"><i class="fas fa-bars"></i></span>
+                <a class="navbar-brand text-white ms-3" href="#">Arti-Asta</a>
+            </div>
+        </nav>
+
+
+<!-- Content -->
+<!-- Content -->
+<div class="contents">
+    <h1 class="text-center my-5">Order Details</h1>
+    
+    <!-- Order Details Cards (Multiple Small Cards) -->
+    <div class="row">
+        <!-- Order 1 Details Card -->
+        <div class="col-md-4">
+            <div class="card animate__animated animate__fadeInUp animate__delay-1s">
+                <div class="card-header bg-primary text-white rounded-top">
+                    <h5>Order #ORD12345</h5>
+                    <p class="mb-0">Order Date: <span class="text-muted">2025-01-10</span></p>
+                </div>
+                <div class="card-body">
+                    <h6><strong>Customer:</strong> <span class="text-muted">John Doe</span></h6>
+                    <p><strong>Email:</strong> johndoe@example.com</p>
+                    <p><strong>Phone:</strong> +91 1234567890</p>
+                    <p><strong>Shipping Address:</strong> 123 Street, City, Country</p>
+
+                    <h6 class="mt-4"><strong><i class="fas fa-cogs"></i> Product:</strong> Astrology Consultation</h6>
+                    <p><strong>Quantity:</strong> 1</p>
+                    <p><strong>Price:</strong> ₹5000</p>
+
+                    <h6 class="mt-4"><strong><i class="fas fa-check-circle"></i> Status:</strong> Shipped</h6>
+                    <p><strong>Tracking No.:</strong> <span class="text-muted">TRACK98765</span></p>
+                    <p><strong>Estimated Delivery:</strong> <span class="text-muted">2025-01-20</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order 2 Details Card -->
+        <div class="col-md-4">
+            <div class="card animate__animated animate__fadeInUp animate__delay-2s">
+                <div class="card-header bg-success text-white rounded-top">
+                    <h5>Order #ORD54321</h5>
+                    <p class="mb-0">Order Date: <span class="text-muted">2025-01-12</span></p>
+                </div>
+                <div class="card-body">
+                    <h6><strong>Customer:</strong> <span class="text-muted">Sarah Smith</span></h6>
+                    <p><strong>Email:</strong> sarahsmith@example.com</p>
+                    <p><strong>Phone:</strong> +91 9876543210</p>
+                    <p><strong>Shipping Address:</strong> 456 Avenue, City, Country</p>
+
+                    <h6 class="mt-4"><strong><i class="fas fa-cogs"></i> Product:</strong> Astrology Consultation</h6>
+                    <p><strong>Quantity:</strong> 2</p>
+                    <p><strong>Price:</strong> ₹10000</p>
+
+                    <h6 class="mt-4"><strong><i class="fas fa-hourglass-start"></i> Status:</strong> Pending</h6>
+                    <p><strong>Tracking No.:</strong> <span class="text-muted">TRACK65432</span></p>
+                    <p><strong>Estimated Delivery:</strong> <span class="text-muted">2025-02-10</span></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order 3 Details Card -->
+        <div class="col-md-4">
+            <div class="card animate__animated animate__fadeInUp animate__delay-3s">
+                <div class="card-header bg-warning text-dark rounded-top">
+                    <h5>Order #ORD67890</h5>
+                    <p class="mb-0">Order Date: <span class="text-muted">2025-01-15</span></p>
+                </div>
+                <div class="card-body">
+                    <h6><strong>Customer:</strong> <span class="text-muted">Emily Johnson</span></h6>
+                    <p><strong>Email:</strong> emilyj@example.com</p>
+                    <p><strong>Phone:</strong> +91 1122334455</p>
+                    <p><strong>Shipping Address:</strong> 789 Road, City, Country</p>
+
+                    <h6 class="mt-4"><strong><i class="fas fa-cogs"></i> Product:</strong> Astrology Consultation</h6>
+                    <p><strong>Quantity:</strong> 1</p>
+                    <p><strong>Price:</strong> ₹5000</p>
+
+                    <h6 class="mt-4"><strong><i class="fas fa-check-circle"></i> Status:</strong> Delivered</h6>
+                    <p><strong>Tracking No.:</strong> <span class="text-muted">TRACK34567</span></p>
+                    <p><strong>Delivery Date:</strong> <span class="text-muted">2025-01-15</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./js/main.js"></script>
+   
+</body>
+</html>
+

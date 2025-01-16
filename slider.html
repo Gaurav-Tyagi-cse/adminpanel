@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: whitesmoke
+        }
+      
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <span class="text-white" id="close-btn"><i class="fas fa-times"></i></span>
+        <div class="text-center py-4">
+             <!-- <h4>Admin Panel</h4>  -->
+            <img src="./AARTI LOGO.webp" style="width: 50px;"  alt="" srcset="">
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link " href="Dashboard.html">Dashboard</a>
+            <a class="nav-link active" href="Home-slider.html">Slider</a>
+            <a class="nav-link" href="About.html">About</a>
+            
+            <a class="nav-link" href="product-details.html">Product Details</a>
+            <!-- <a class="nav-link" href="">Content management</a> -->
+            <a class="nav-link" href="Notification.html">Notification Communication</a>
+            <a class="nav-link" href="Billing.html">Billing</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            <!-- Logout -->
+            <a class="nav-link" href="#" onclick="confirmLogout()">Logout</a>
+        </nav>
+    </div>
+
+    <div class="content" id="content">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <span class="toggle-btn" id="toggle-btn"><i class="fas fa-bars"></i></span>
+                <a class="navbar-brand text-white ms-3" href="#">Arti-Asta</a>
+            </div>
+        </nav>
+        <div class="container">
+            <h1 class="text-center">Page Sliders Management</h1>
+    
+            <!-- Tab Navigation -->
+            <ul class="nav nav-tabs" id="sliderTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#homeSlider" type="button" role="tab" style="color: black;"><b>Home</b></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="about-tab" data-bs-toggle="tab" data-bs-target="#aboutSlider" type="button" role="tab" style="color: black;"><b>About</b></button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contactSlider" type="button" role="tab" style="color: black;"><b>Contact</b></button>
+                </li>
+            </ul>
+    
+            <!-- Tab Content -->
+            <div class="tab-content" id="sliderTabsContent">
+                <!-- Home Slider Tab -->
+                <div class="tab-pane fade show active" id="homeSlider" role="tabpanel">
+                    <h2 class="mt-4">Home Slider</h2>
+                    <button class="btn btn-warning btn-add" onclick="addNewSlider('home')">Add New Home Slider</button>
+                    <div class="table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="homeSliderTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+    
+                <!-- About Slider Tab -->
+                <div class="tab-pane fade" id="aboutSlider" role="tabpanel">
+                    <h2 class="mt-4">About Slider</h2>
+                    <button class="btn btn-warning btn-add" onclick="addNewSlider('about')">Add New About Slider</button>
+                    <div class="table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="aboutSliderTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+    
+                <!-- Contact Slider Tab -->
+                <div class="tab-pane fade" id="contactSlider" role="tabpanel">
+                    <h2 class="mt-4">Contact Slider</h2>
+                    <button class="btn btn-warning btn-add" onclick="addNewSlider('contact')">Add New Contact Slider</button>
+                    <div class="table-container">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="contactSliderTableBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal for adding/editing slider -->
+        <div class="modal fade" id="sliderModal" tabindex="-1" aria-labelledby="sliderModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="sliderModalLabel">Add/Edit Slider</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="sliderForm">
+                            <div class="mb-3">
+                                <label for="sliderImage" class="form-label">Upload Image</label>
+                                <input type="file" class="form-control" id="sliderImage">
+                            </div>
+                            <input type="hidden" id="editSliderId">
+                            <input type="hidden" id="sliderPage">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="saveSlider()">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./js/main.js"></script>
+   <script src="./js/slider.js"></script>
+</body>
+</html>
+

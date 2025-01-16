@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<style>
+    /* Animation for the chart */
+    .chart-animation {
+        opacity: 0;
+        animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+</style>
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fafbfe;
+        }
+      
+
+
+   
+
+
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- <div class="overlay" id="overlay"></div> -->
+    <div class="sidebar" id="sidebar">
+        <span class="text-white" id="close-btn"><i class="fas fa-times"></i></span>
+        <div class="text-center py-4">
+            <img src="./AARTI LOGO.webp" style="width: 50px;" alt="" srcset="">
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link active" href="Dashboard.html">Dashboard</a>
+            <a class="nav-link" href="slider.html">Slider</a>
+            <a class="nav-link" href="About.html">About</a>
+            <a class="nav-link" href="Order.html">Order</a>
+            <a class="nav-link" href="product-details.html">Payment Details</a>
+            <a class="nav-link" href="Notification.html">Notification Communication</a>
+            <a class="nav-link" href="Billing.html">Billing</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            <!-- Logout -->
+            <a class="nav-link" href="#" onclick="confirmLogout()">Logout</a>
+        </nav>
+    </div>
+
+    
+
+    <div class="content" id="content">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <span class="toggle-btn" id="toggle-btn"><i class="fas fa-bars"></i></span>
+                <a class="navbar-brand text-white ms-3" href="#">Arti-Asta</a>
+            </div>
+        </nav>
+        <div class="container mt-4">
+            <h2>Go To Main Website</h2>
+            <a href="https://aartiastha.com/" class="btn btn-primary">Visit Website</a>
+
+           
+        </div>
+    <!-- Add Dashboard Admin Section Here -->
+    <div class="dashboard-admin mt-5">
+        <h2 class="text-center">Dashboard Admin</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Admin Panel Overview</h5>
+                        <p class="card-text">View the main statistics and the status of various components of the site.</p>
+                        <a href="#" class="btn btn-primary">View Overview</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">User Management</h5>
+                        <p class="card-text">Manage users and their roles in the admin panel.</p>
+                        <a href="#" class="btn btn-primary">Manage Users</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Content Management</h5>
+                        <p class="card-text">Edit and manage website content like posts, pages, and media.</p>
+                        <a href="#" class="btn btn-primary">Manage Content</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Graph Section Here -->
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Website Traffic Over Time</h5>
+                        <canvas id="trafficChart" class="chart-animation"></canvas> <!-- Graph with animation class -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./js/main.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+   <script>
+       var ctx = document.getElementById('trafficChart').getContext('2d');
+       var trafficChart = new Chart(ctx, {
+           type: 'line', // Choose the type of graph (line chart)
+           data: {
+               labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'], // X-axis labels (months)
+               datasets: [{
+                   label: 'Website Traffic',
+                   data: [50, 80, 65, 120, 150, 180, 200], // Y-axis data (traffic values)
+                   borderColor: 'rgba(75, 192, 192, 1)', // Line color
+                   backgroundColor: 'rgba(75, 192, 192, 0.2)', // Area under the line color
+                   fill: true, // Filling the area under the line
+                   tension: 0.4
+               }]
+           },
+           options: {
+               responsive: true,
+               scales: {
+                   y: {
+                       beginAtZero: true
+                   }
+               }
+           }
+       });
+   
+       // Add a delay animation for chart appearance
+       window.onload = function () {
+           const chartCanvas = document.getElementById('trafficChart');
+           chartCanvas.classList.add('animate__animated', 'animate__fadeIn');
+       };
+   </script>
+
+
+<script>
+    // Open/Close Sidebar logic
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.getElementById('close-btn');
+
+    // Function to open the sidebar
+    function openSidebar() {
+        sidebar.classList.add('active');
+    }
+
+    // Function to close the sidebar
+    function closeSidebar() {
+        sidebar.classList.remove('active');
+    }
+
+    // Trigger close on the close button
+    closeBtn.addEventListener('click', closeSidebar);
+
+    // Function to show confirmation for logout
+    function confirmLogout() {
+        if (confirm("Are you sure you want to log out?")) {
+            window.location.href = 'logout.html'; // Redirect to logout page or perform any logout action
+        }
+    }
+</script>
+   
+</body>
+</html>
+

@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: #fafbfe;
+        }
+      
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="overlay" id="overlay"></div>
+    <div class="sidebar" id="sidebar">
+        <span class="text-white" id="close-btn"><i class="fas fa-times"></i></span>
+        <div class="text-center py-4">
+             <!-- <h4>Admin Panel</h4>  -->
+            <img src="./AARTI LOGO.webp" style="width: 50px;"  alt="" srcset="">
+        </div>
+        <nav class="nav flex-column">
+            <a class="nav-link " href="Dashboard.html">Dashboard</a>
+            <a class="nav-link" href="slider.html">Slider</a>
+            <a class="nav-link" href="About.html">About</a>
+            <a class="nav-link" href="Order.html">Order</a>
+            <a class="nav-link active" href="product-details.html">Payment Details</a>
+            <!-- <a class="nav-link" href="#">Content management</a> -->
+            <a class="nav-link" href="Notification.html">Notification Communication</a>
+            <a class="nav-link" href="Billing.html">Billing</a>
+            <a class="nav-link" href="contact.html">Contact</a>
+            
+            <!-- Logout -->
+            <a class="nav-link" href="#" onclick="confirmLogout()">Logout</a>
+            
+        </nav>
+    </div>
+
+    <div class="content" id="content">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <span class="toggle-btn" id="toggle-btn"><i class="fas fa-bars"></i></span>
+                <a class="navbar-brand text-white ms-3" href="#">Arti-Asta</a>
+            </div>
+        </nav>
+
+        <div class="contents">
+            <h1>Payment Details</h1>
+            <div class="table-responsive">
+            <div class="table-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Payment ID</th>
+                            <th>Product Name</th>
+                            <th>Customer Name</th>
+                            <th>Address</th>
+                            <th>Payment Method</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentTableBody">
+                        <!-- Payment details will be dynamically loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="./js/main.js"></script>
+   <script>
+    // Mock payment data
+    const payments = [
+        {
+            paymentId: "PAY12345",
+            productName: "Astrology Consultation",
+            customerName: "Mohan",
+            customerAddress: "123 Street, City, Country",
+            paymentMethod: "Credit Card",
+            paymentAmount: "₹5000",
+            paymentDate: "2025-01-15"
+        },
+        {
+            paymentId: "PAY67890",
+            productName: "Vedic Astrology Report",
+            customerName: "Ram",
+            customerAddress: "456 Avenue, Town, Country",
+            paymentMethod: "UPI",
+            paymentAmount: "₹3000",
+            paymentDate: "2025-01-14"
+        }
+    ];
+
+    // Populate the table with payment data
+    const paymentTableBody = document.getElementById("paymentTableBody");
+    payments.forEach(payment => {
+        const row = `
+            <tr>
+                <td>${payment.paymentId}</td>
+                <td>${payment.productName}</td>
+                <td>${payment.customerName}</td>
+                <td>${payment.customerAddress}</td>
+                <td>${payment.paymentMethod}</td>
+                <td>${payment.paymentAmount}</td>
+                <td>${payment.paymentDate}</td>
+            </tr>
+        `;
+        paymentTableBody.insertAdjacentHTML("beforeend", row);
+    });
+
+
+
+</script>
+</body>
+</html>
+
