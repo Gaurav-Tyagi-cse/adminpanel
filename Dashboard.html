@@ -49,6 +49,7 @@
             <a class="nav-link active" href="Dashboard.html">Dashboard</a>
             <a class="nav-link" href="slider.html">Slider</a>
             <a class="nav-link" href="About.html">About</a>
+            <a class="nav-link" href="Product.html">Product</a>
             <a class="nav-link" href="Order.html">Order</a>
             <a class="nav-link" href="product-details.html">Payment Details</a>
             <a class="nav-link" href="Notification.html">Notification Communication</a>
@@ -83,7 +84,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Admin Panel Overview</h5>
                         <p class="card-text">View the main statistics and the status of various components of the site.</p>
-                        <a href="#" class="btn btn-primary">View Overview</a>
+                        <a href="overview.html" class="btn btn-primary">View Overview</a>
                     </div>
                 </div>
             </div>
@@ -133,7 +134,7 @@
        var trafficChart = new Chart(ctx, {
            type: 'line', // Choose the type of graph (line chart)
            data: {
-               labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'], // X-axis labels (months)
+               labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], // X-axis labels (months)
                datasets: [{
                    label: 'Website Traffic',
                    data: [50, 80, 65, 120, 150, 180, 200], // Y-axis data (traffic values)
@@ -161,31 +162,7 @@
    </script>
 
 
-<script>
-    // Open/Close Sidebar logic
-    const sidebar = document.getElementById('sidebar');
-    const closeBtn = document.getElementById('close-btn');
 
-    // Function to open the sidebar
-    function openSidebar() {
-        sidebar.classList.add('active');
-    }
-
-    // Function to close the sidebar
-    function closeSidebar() {
-        sidebar.classList.remove('active');
-    }
-
-    // Trigger close on the close button
-    closeBtn.addEventListener('click', closeSidebar);
-
-    // Function to show confirmation for logout
-    function confirmLogout() {
-        if (confirm("Are you sure you want to log out?")) {
-            window.location.href = 'logout.html'; // Redirect to logout page or perform any logout action
-        }
-    }
-</script>
    
 </body>
 </html>
