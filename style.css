@@ -124,6 +124,9 @@
     white-space: nowrap; /* Prevents content from wrapping */
 }
 
+.button-space{
+    margin-bottom: 10px;
+}
 
 /* Desktop view adjustments */
 @media (min-width: 1024px) {
